@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f4f3ef">
-    <title>FRAME | Bengaluru Cinema</title>
+    <title>AbCinemas | Bengaluru Cinema</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -498,6 +498,9 @@
             color: #696b65;
             font-size: 10px;
             line-height: 1.5;
+            white-space: nowrap;
+            overflow-x: auto;
+            scrollbar-width: thin;
         }
 
         .poster {
@@ -2136,12 +2139,96 @@
                 gap: 28px;
             }
         }
+
+        .rating-row { display:flex; align-items:center; gap:9px; min-height:34px; margin:9px 0 0; }
+        .rating-score { color:#274b35; font:700 15px var(--display); letter-spacing:-.03em; }
+        .rating-score small { margin-left:2px; color:#72746f; font:500 10px var(--body); }
+        .letterboxd { width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; padding:5px; border:1px solid #c6c8bd; border-radius:50%; background:#fff; box-shadow:0 3px 10px rgba(24,35,24,.10); transition:transform .2s,box-shadow .2s; }
+        .letterboxd:hover { transform:translateY(-2px); box-shadow:0 7px 18px rgba(24,35,24,.18); }
+        .letterboxd img { display:block; width:22px; height:22px; object-fit:contain; }
+        .detail-letterboxd { width:auto; height:auto; display:inline-flex; gap:7px; border:0; padding:0; background:none; box-shadow:none; }
+        .detail-letterboxd .rating-score { font-size:13px; }
+        .studio-label { color:#272824; font-size:11px; font-weight:800; }
+        .card-actions { align-items:center; }
+        body:not(.authenticated) > header, body:not(.authenticated) > main, body:not(.authenticated) > footer { display:none !important; }
+        #auth-gate { position:fixed; inset:0; z-index:1000; display:none; place-items:center; padding:24px; background:linear-gradient(135deg,rgba(24,29,25,.88),rgba(24,29,25,.66)),url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85") center/cover; }
+        body:not(.authenticated) #auth-gate { display:grid; }
+        .auth-card { width:min(440px,100%); padding:36px; background:#f8f7f3; color:#20211f; box-shadow:0 28px 90px rgba(0,0,0,.35); }
+        .auth-brand { display:flex; align-items:center; gap:10px; margin-bottom:28px; font:700 24px var(--display); }
+        .auth-brand-mark { display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#20211f; color:#f8f7f3; font-size:15px; }
+        .auth-card h1 { font-size:clamp(34px,7vw,48px); margin:10px 0; color:#20211f; }
+        .auth-card > p { color:#656760; line-height:1.6; font-size:14px; }
+        .auth-tabs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:24px 0 18px; }
+        .auth-tabs button { padding:11px; border:1px solid #d0d1ca; background:transparent; color:#565852; cursor:pointer; font-weight:700; }
+        .auth-tabs button[aria-selected="true"] { background:#20211f; color:#fff; border-color:#20211f; }
+        .auth-form { display:grid; gap:13px; }
+        .auth-form label { display:grid; gap:6px; color:#565852; font-size:12px; font-weight:600; }
+        .auth-form input { width:100%; height:44px; padding:0 12px; border:1px solid #c9cac3; background:#fff; color:#20211f; }
+        .auth-form button { width:100%; justify-content:center; margin-top:5px; }
+        .auth-error { min-height:18px; margin:0; color:#a33f2f !important; font-size:12px !important; }
+        .auth-note { margin-top:16px !important; font-size:11px !important; }
+        .promo-content { padding:42px 34px; text-align:center; }
+        .promo-count { display:inline-block; padding:7px 11px; border-radius:20px; background:#f1eee5; color:#7a483a; font-size:11px; font-weight:700; }
+        .promo-content h2 { margin:14px 0; }
+        .promo-content p { color:#656760; line-height:1.55; }
+        .promo-content .primary-button { margin-top:10px; }
+        @media(max-width:500px) { .auth-card { padding:26px 22px; } .promo-content { padding:34px 22px; } }
+
+
+        .dune-countdown { margin:12px 0 14px; padding:11px 13px; background:#f2f0e9; border:1px solid #d8d5ca; border-left:3px solid var(--orange); }
+        .countdown-label { display:block; color:#242522; font-size:20px; line-height:1.15; font-weight:800; letter-spacing:0; text-transform:none; }
+        .countdown-units { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:10px; }
+        .countdown-unit { display:flex; align-items:baseline; gap:3px; color:#242522; }
+        .countdown-value { font:700 22px/1 var(--display); font-variant-numeric:tabular-nums; }
+        .schedule-step { padding:22px; }
+        .booking-shell[hidden] { display:none !important; }
+        .schedule-step h3 { margin:0 0 8px; font:700 22px var(--display); }
+        .schedule-step p { color:#656760; }
+        .schedule-fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0; }
+        .schedule-fields label { display:grid; gap:6px; font-size:12px; font-weight:600; }
+        .schedule-fields input,.schedule-fields select { height:44px; padding:0 10px; border:1px solid #c9cac3; background:#fff; }
+        .payment-demo { max-width:560px; margin:auto; padding:30px; }
+        .payment-demo h2 { margin:8px 0; }
+        .payment-options { display:grid; gap:10px; margin:18px 0; }
+        .payment-option { display:flex; gap:10px; align-items:center; padding:14px; border:1px solid #d8d5ca; }
+        .payment-fields { display:grid; gap:12px; margin:16px 0; }
+        .payment-fields label { display:grid; gap:6px; font-size:12px; font-weight:600; }
+        .payment-fields input,.payment-fields select { height:44px; padding:0 11px; border:1px solid #c9cac3; background:#fff; color:#20211f; }
+        .payment-fields .split { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .payment-note { margin:14px 0; color:#656760; font-size:11px; line-height:1.5; }
+        .payment-demo button[type=submit] { width:100%; justify-content:center; }
+        .digital-ticket { max-width:620px; margin:12px auto; overflow:hidden; border:1px solid #d9d6ce; border-radius:14px; background:#fff; color:#20211f; box-shadow:0 18px 55px #0002; }
+        .ticket-head { padding:22px 24px 18px; background:#20211f; color:#fff; }
+        .ticket-head .section-kicker { color:#e7a05c; }
+        .ticket-head h2 { margin:5px 0; font:700 27px var(--display); }
+        .ticket-head p { margin:0; color:#d7d7d1; }
+        .ticket-body { padding:20px 24px; }
+        .ticket-cinema { margin:0 0 17px; font-weight:700; }
+        .ticket-details { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+        .ticket-detail small { display:block; margin-bottom:4px; color:#777970; font-size:10px; text-transform:uppercase; }
+        .ticket-detail strong { font-size:14px; }
+        .ticket-seats { margin:16px 0; padding-top:14px; border-top:1px dashed #b9b7b0; }
+        .ticket-qr-row { display:flex; align-items:center; gap:18px; padding-top:16px; border-top:1px dashed #b9b7b0; }
+        .ticket-qr { width:118px; height:118px; object-fit:contain; padding:5px; border:1px solid #e4e1d8; }
+        .ticket-qr-copy { color:#64665f; font-size:11px; line-height:1.5; }
+        .ticket-footer { padding:13px 24px; background:#f2f0e9; color:#74766f; font-size:10px; }
+        .ticket-actions { display:flex; justify-content:center; margin:18px auto; }
+        @media(max-width:500px) { .payment-demo { padding:22px; } .ticket-details { gap:11px; } .ticket-head,.ticket-body { padding-left:18px; padding-right:18px; } .ticket-qr { width:96px; height:96px; } }
+        .countdown-unit small { color:#777970; font-size:9px; text-transform:uppercase; }
+
     </style>
 </head>
 
 <body>
-    <header class="topbar"><a class="brand" href="#home" aria-label="Frame Bengaluru home"><span
-                class="brand-mark">F</span>FRAME</a>
+    <section id="auth-gate" aria-label="Sign in to AbCinemas"><div class="auth-card">
+        <div class="auth-brand"><span class="auth-brand-mark">A</span>AbCinemas</div><p class="section-kicker">YOUR NEXT MOVIE NIGHT</p>
+        <h1 id="auth-title">Welcome back.</h1><p id="auth-description">Sign in or create an account to explore films and save your plans.</p>
+        <div class="auth-tabs" role="tablist" aria-label="Account access"><button type="button" id="signin-tab" role="tab" aria-selected="true">Sign in</button><button type="button" id="register-tab" role="tab" aria-selected="false">Create account</button></div>
+        <form class="auth-form" id="auth-form"><label>Email address<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required></label><p class="auth-error" id="auth-error" role="alert"></p><button class="primary-button" id="auth-submit" type="submit"><span id="auth-submit-label">Sign in</span><span class="arrow">↗</span></button></form>
+        <p class="auth-note">Demo access only: this saves your email in this browser. It does not create a real account or password.</p></div></section>
+
+    <header class="topbar"><a class="brand" href="#home" aria-label="AbCinemas home"><span
+                class="brand-mark">A</span>AbCinemas</a>
         <nav class="nav-links" aria-label="Main navigation"><a href="#home">Home</a><a href="#movies">Films</a><a
                 href="#bookings" id="bookings-link">My tickets</a></nav><button class="login-button"
             id="login-open">SIGN IN</button>
@@ -2150,7 +2237,7 @@
         <section class="hero" id="home">
             <div class="hero-art" aria-hidden="true"></div>
             <div class="hero-inner">
-                <p class="eyebrow">A considered cinema guide · Bengaluru</p>
+                <p class="eyebrow">The Best ticketing site in Bengaluru</p>
                 <h1>GOOD FILMS.<br><span>GOOD COMPANY.</span></h1>
                 <p class="hero-copy">A dozen films worth the big screen, from modern favourites to the next worlds
                     arriving at AMB Dolby Cinema, Kapali.</p><a class="primary-button" href="#movies">Browse films <span
@@ -2187,9 +2274,9 @@
         </section>
     </main>
     <footer>
-        <div><a class="brand" href="#home"><span class="brand-mark">F</span>FRAME</a>
+        <div><a class="brand" href="#home"><span class="brand-mark">A</span>AbCinemas</a>
             <p>FILMS, SEATS & A GOOD EVENING IN BENGALURU.</p>
-        </div><span>© 2026 FRAME. ALL RIGHTS RESERVED.</span><span>Poster imagery via <a
+        </div><span>© 2026 AbCinemas. ALL RIGHTS RESERVED.</span><span>Poster imagery via <a
                 href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>; rights belong to
             respective studios.</span>
     </footer>
@@ -2228,21 +2315,37 @@
         }
 
         const movies = [
-            { title: "The Prestige", year: 2006, genre: "Mystery · Thriller", duration: "2h 10m", age: "PG-13", rating: "4.2", status: "Modern classic", art: "photo-1519681393784-d120267933ba", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg", tone: "rgba(28,27,24,.35)", letterboxd: "https://letterboxd.com/film/the-prestige/", awards: "Oscars: 2 nominations · BAFTA: 2 nominations", description: "Two rival magicians push obsession, deception and sacrifice to impossible extremes." },
-            { title: "Kantara: Chapter 1", year: 2025, genre: "Action · Drama · Fantasy", duration: "2h 45m", age: "U/A 16+ · India", rating: "4.1", status: "Kannada · Indian cinema", art: "photo-1511497584788-876760111969", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/hCxdcaRK6jmwnwjitYRejVCU1P0.jpg", tone: "rgba(35,37,29,.38)", letterboxd: "https://letterboxd.com/film/kantara-a-legend-chapter-1/", awards: "Oscar / BAFTA / Cannes: no wins or nominations listed", description: "A mythic prequel rooted in the land, folklore and ritual of coastal Karnataka." },
-            { title: "A Bronx Tale", year: 1993, genre: "Crime · Drama", duration: "2h 1m", age: "R · US", rating: "3.8", status: "Modern classic", art: "photo-1519608487953-e999c86e7455", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/7Obzc6svsHSR1za0LqzkpwFsEhw.jpg", tone: "rgba(39,30,26,.36)", letterboxd: "https://letterboxd.com/film/a-bronx-tale/", awards: "No Oscar, BAFTA or Cannes wins / nominations listed", description: "A boy growing up in the Bronx is pulled between his father's values and a local mobster's influence." },
-            { title: "The Wolf of Wall Street", year: 2013, genre: "Biography · Crime · Comedy", duration: "3h", age: "R · US", rating: "4.1", status: "Modern classic", art: "photo-1497366754035-f200968a6e72", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg", tone: "rgba(47,39,30,.4)", letterboxd: "https://letterboxd.com/film/the-wolf-of-wall-street/", awards: "Oscars: 5 nominations · BAFTA: 3 nominations", description: "A stockbroker's meteoric rise and excess-fuelled fall, told with ferocious dark comedy." },
-            { title: "Terminator 2: Judgment Day", year: 1991, genre: "Action · Sci-Fi", duration: "2h 17m", age: "R · US", rating: "4.0", status: "Modern classic", art: "photo-1519608487953-e999c86e7455", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg", tone: "rgba(42,43,43,.4)", letterboxd: "https://letterboxd.com/film/terminator-2-judgment-day/", awards: "Oscars: 4 wins · BAFTA: Special Visual Effects win", description: "A reprogrammed Terminator protects a young John Connor from a more advanced machine." },
-            { title: "Dune: Part Three", year: 2026, genre: "Sci-Fi · Adventure", duration: "TBA", age: "Not rated", rating: "TBA", status: "Coming 18 Dec 2026 · 50% off", art: "photo-1462331940025-496dfbfc7564", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg", tone: "rgba(28,31,34,.4)", letterboxd: "https://letterboxd.com/film/dune-part-three/", awards: "Unreleased · awards and audience rating pending", releaseDate: "2026-12-18", discount: true, description: "The next chapter in Denis Villeneuve's Dune saga. Runtime, certification and audience rating are not yet confirmed." },
-            { title: "Ramayana: Part One", year: 2026, genre: "Epic · Action · Fantasy", duration: "TBA", age: "TBA", rating: "TBA", status: "2026 release · details pending", art: "photo-1500530855697-b586d89ba3ee", tone: "rgba(41,36,29,.38)", letterboxd: "https://letterboxd.com/film/ramayana/", awards: "Awards and audience rating pending release / listing confirmation", description: "The first chapter of Nitesh Tiwari's Indian epic adaptation. Runtime, certification and Letterboxd score are pending." },
-            { title: "Project Hail Mary", year: 2026, genre: "Sci-Fi · Adventure", duration: "2h 36m", age: "PG-13 · US", rating: "4.2", status: "2026 release", art: "photo-1446776811953-b23d57bd21aa", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/iOb2fjXLbpJgyQXe46n1WtGCnaa.jpg", tone: "rgba(25,34,40,.35)", letterboxd: "https://letterboxd.com/film/project-hail-mary/", awards: "2027 awards season pending · no major nominations listed yet", description: "An astronaut wakes alone aboard a spacecraft and must solve an impossible problem to save Earth." },
-            { title: "Spider-Man: Into the Spider-Verse", year: 2018, genre: "Animation · Action · Adventure", duration: "1h 57m", age: "PG · US", rating: "4.3", status: "Modern classic", art: "photo-1484589065579-248aad0d8b13", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg", tone: "rgba(48,30,32,.4)", letterboxd: "https://letterboxd.com/film/spider-man-into-the-spider-verse/", awards: "Oscar: Best Animated Feature win · BAFTA: Best Animated Film win", description: "Miles Morales discovers a multiverse of Spider-people and finds his own way to wear the mask." },
-            { title: "Life of Pi", year: 2012, genre: "Adventure · Drama · Fantasy", duration: "2h 7m", age: "PG · US", rating: "3.8", status: "Modern classic", art: "photo-1500375592092-40eb2168fd21", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/iLgRu4hhSr6V1uManX6ukDriiSc.jpg", tone: "rgba(16,45,54,.36)", letterboxd: "https://letterboxd.com/film/life-of-pi/", awards: "Oscars: 4 wins · BAFTA: 2 wins", description: "A young man and a Bengal tiger share a lifeboat on an extraordinary journey across the Pacific." },
-            { title: "The Lunchbox", year: 2013, genre: "Drama · Romance", duration: "1h 44m", age: "U/A · India", rating: "3.8", status: "Indian cinema", art: "photo-1517248135467-4c7edcad34c4", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/jSOiz1h97i3qwjZJXY8SeLvjPsl.jpg", tone: "rgba(48,39,31,.36)", letterboxd: "https://letterboxd.com/film/the-lunchbox/", awards: "Cannes Critics' Week: Grand Rail d'Or · BAFTA: Film Not in the English Language nomination", description: "A mistaken lunchbox delivery connects a lonely office worker and a young housewife in Mumbai." },
-            { title: "The Batman", year: 2022, genre: "Crime · Drama · Action", duration: "2h 56m", age: "PG-13 · US", rating: "3.8", status: "Modern classic", art: "photo-1519608487953-e999c86e7455", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/74xTEgt7R36Fpooo50r9T25onhq.jpg", tone: "rgba(30,31,32,.44)", letterboxd: "https://letterboxd.com/film/the-batman/", awards: "Oscars: 3 nominations · BAFTA: 4 nominations", description: "A young Batman follows a trail of riddles through Gotham's corruption and underworld." }
+            { title: "Dune: Part Three", studio: "Legendary Pictures", year: 2026, genre: "Sci-Fi · Adventure", duration: "TBA", age: "Not rated", rating: "TBA", status: "Dec 16, 2026 · 50% off estimate", art: "photo-1462331940025-496dfbfc7564", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/d43fvHQsIMa4kpyhKXw0haEJIvI.jpg", tone: "rgba(28,31,34,.4)", letterboxd: "https://letterboxd.com/film/dune-part-three/", awards: "", releaseDate: "2026-12-16", discount: true, countdownStart: "2026-11-26T05:00:00+05:30", countdownDeadline: "2026-12-16T19:30:00+05:30", description: "The next chapter in Denis Villeneuve's Dune saga. Runtime, certification and audience rating are not yet confirmed." },
+            { title: "Kantara: Chapter 1", studio: "Hombale Films", year: 2025, genre: "Action · Drama · Fantasy", duration: "2h 45m", age: "U/A 16+ · India", rating: "4.1", status: "Kannada · Indian cinema", art: "photo-1511497584788-876760111969", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/hCxdcaRK6jmwnwjitYRejVCU1P0.jpg", tone: "rgba(35,37,29,.38)", letterboxd: "https://letterboxd.com/film/kantara-a-legend-chapter-1/", awards: "", description: "A mythic prequel rooted in the land, folklore and ritual of coastal Karnataka." },
+            { title: "A Bronx Tale", studio: "Savoy Pictures", year: 1993, genre: "Crime · Drama", duration: "2h 1m", age: "R · US", rating: "3.8", status: "Modern classic", art: "photo-1519608487953-e999c86e7455", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/7Obzc6svsHSR1za0LqzkpwFsEhw.jpg", tone: "rgba(39,30,26,.36)", letterboxd: "https://letterboxd.com/film/a-bronx-tale/", awards: "", description: "A boy growing up in the Bronx is pulled between his father's values and a local mobster's influence." },
+            { title: "The Wolf of Wall Street", studio: "Paramount Pictures", year: 2013, genre: "Biography · Crime · Comedy", duration: "3h", age: "R · US", rating: "4.1", status: "Modern classic", art: "photo-1497366754035-f200968a6e72", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/kW9LmvYHAaS9iA0tHmZVq8hQYoq.jpg", tone: "rgba(47,39,30,.4)", letterboxd: "https://letterboxd.com/film/the-wolf-of-wall-street/", awards: "<strong>Oscar nominations:</strong> Best Picture; Directing; Actor (Leonardo DiCaprio); Supporting Actor (Jonah Hill); Adapted Screenplay.", description: "A stockbroker's meteoric rise and excess-fuelled fall, told with ferocious dark comedy." },
+            { title: "Terminator 2: Judgment Day", studio: "TriStar Pictures", year: 1991, genre: "Action · Sci-Fi", duration: "2h 17m", age: "R · US", rating: "4.0", status: "Modern classic", art: "photo-1519608487953-e999c86e7455", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg", tone: "rgba(42,43,43,.4)", letterboxd: "https://letterboxd.com/film/terminator-2-judgment-day/", awards: "<strong>Oscar wins:</strong> Makeup; Sound; Sound Effects Editing; Visual Effects. · <strong>Oscar nominations:</strong> Cinematography; Film Editing. · <strong>BAFTA wins:</strong> Achievement in Special Visual Effects; Sound.", description: "A reprogrammed Terminator protects a young John Connor from a more advanced machine." },
+            { title: "The Prestige", studio: "Warner Bros. Pictures", year: 2006, genre: "Mystery · Thriller", duration: "2h 10m", age: "PG-13", rating: "4.2", status: "Modern classic", art: "photo-1519681393784-d120267933ba", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg", tone: "rgba(28,27,24,.35)", letterboxd: "https://letterboxd.com/film/the-prestige/", awards: "<strong>Oscar nominations:</strong> Art Direction; Cinematography.", description: "Two rival magicians push obsession, deception and sacrifice to impossible extremes." },
+            { title: "Marty Supreme", studio: "A24", year: 2025, genre: "Drama · Sport", duration: "2h 29m", age: "R · US", rating: "4.0", status: "2025 release", art: "photo-1519608487953-e999c86e7455", poster: "https://a24films.com/_next/image?q=75&url=https%3A%2F%2Fapi-asset-production.s3.amazonaws.com%2Fmedia%2Fimages%2Ftheatrical_poster_Marty_Supreme.jpg&w=1200", tone: "rgba(41,36,29,.38)", letterboxd: "https://letterboxd.com/film/marty-supreme/", awards: "<strong>Oscar nominations:</strong> Best Picture; Actor (Timothée Chalamet); Casting; Cinematography; Film Editing; Production Design; Writing (Original Screenplay).", description: "Marty Mauser, a wily hustler with a dream no one respects, goes to hell and back in pursuit of greatness. Directed by Josh Safdie and starring Timothée Chalamet." },
+            { title: "Project Hail Mary", studio: "Amazon MGM Studios", year: 2026, genre: "Sci-Fi · Adventure", duration: "2h 36m", age: "PG-13 · US", rating: "4.2", status: "2026 release", art: "photo-1446776811953-b23d57bd21aa", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/iOb2fjXLbpJgyQXe46n1WtGCnaa.jpg", tone: "rgba(25,34,40,.35)", letterboxd: "https://letterboxd.com/film/project-hail-mary/", awards: "", description: "An astronaut wakes alone aboard a spacecraft and must solve an impossible problem to save Earth." },
+            { title: "Spider-Man: Into the Spider-Verse", studio: "Sony Pictures Animation", year: 2018, genre: "Animation · Action · Adventure", duration: "1h 57m", age: "PG · US", rating: "4.3", status: "Modern classic", art: "photo-1484589065579-248aad0d8b13", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg", tone: "rgba(48,30,32,.4)", letterboxd: "https://letterboxd.com/film/spider-man-into-the-spider-verse/", awards: "<strong>Oscar win:</strong> Animated Feature Film.", description: "Miles Morales discovers a multiverse of Spider-people and finds his own way to wear the mask." },
+            { title: "Life of Pi", studio: "20th Century Fox", year: 2012, genre: "Adventure · Drama · Fantasy", duration: "2h 7m", age: "PG · US", rating: "3.8", status: "Modern classic", art: "photo-1500375592092-40eb2168fd21", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/iLgRu4hhSr6V1uManX6ukDriiSc.jpg", tone: "rgba(16,45,54,.36)", letterboxd: "https://letterboxd.com/film/life-of-pi/", awards: "<strong>Oscar wins:</strong> Cinematography; Directing; Music (Original Score); Visual Effects. · <strong>Oscar nominations:</strong> Best Picture; Film Editing; Production Design; Sound Editing; Sound Mixing; Writing (Adapted Screenplay); Music (Original Song). · <strong>BAFTA wins:</strong> Cinematography; Special Visual Effects.", description: "A young man and a Bengal tiger share a lifeboat on an extraordinary journey across the Pacific." },
+            { title: "The Lunchbox", studio: "UTV Motion Pictures", year: 2013, genre: "Drama · Romance", duration: "1h 44m", age: "U/A · India", rating: "3.8", status: "Indian cinema", art: "photo-1517248135467-4c7edcad34c4", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/jSOiz1h97i3qwjZJXY8SeLvjPsl.jpg", tone: "rgba(48,39,31,.36)", letterboxd: "https://letterboxd.com/film/the-lunchbox/", awards: "<strong>Cannes Critics’ Week win:</strong> Grand Rail d’Or.", description: "A mistaken lunchbox delivery connects a lonely office worker and a young housewife in Mumbai." },
+            { title: "The Batman", studio: "Warner Bros. Pictures", year: 2022, genre: "Crime · Drama · Action", duration: "2h 56m", age: "PG-13 · US", rating: "3.8", status: "Modern classic", art: "photo-1519608487953-e999c86e7455", poster: "https://media.themoviedb.org/t/p/w300_and_h450_face/74xTEgt7R36Fpooo50r9T25onhq.jpg", tone: "rgba(30,31,32,.44)", letterboxd: "https://letterboxd.com/film/the-batman/", awards: "<strong>Oscar nominations:</strong> Makeup and Hairstyling; Sound; Visual Effects.", description: "A young Batman follows a trail of riddles through Gotham's corruption and underworld." }
         ].map((movie, index) => ({ ...movie, art: movie.poster ? `url('${movie.poster}')` : createPosterArt(index) }));
         const grid = document.getElementById("movie-grid"), search = document.getElementById("search"), genreFilter = document.getElementById("genre-filter"), backdrop = document.getElementById("modal-backdrop"), modalBody = document.getElementById("modal-body"), toast = document.getElementById("toast"); let activeMovie = null, toastTimer;
         [...new Set(movies.flatMap(movie => movie.genre.split(" / ")))].sort().forEach(genre => genreFilter.add(new Option(genre, genre)));
+        const DUNE_COUNTDOWN_START = Date.parse("2026-11-26T05:00:00+05:30");
+        const DUNE_COUNTDOWN_DEADLINE = Date.parse("2026-12-16T19:30:00+05:30");
+        function duneCountdownMarkup() { return `<div class="dune-countdown" data-dune-countdown role="timer" aria-label="Dune Part Three countdown"><strong class="countdown-label" data-countdown-label>Dune: Part Three Releases in</strong><div class="countdown-units"><span class="countdown-unit"><b class="countdown-value" data-unit="days">00</b><small>days</small></span><span class="countdown-unit"><b class="countdown-value" data-unit="hours">00</b><small>hours</small></span><span class="countdown-unit"><b class="countdown-value" data-unit="minutes">00</b><small>min</small></span><span class="countdown-unit"><b class="countdown-value" data-unit="seconds">00</b><small>sec</small></span></div></div>`; }
+        function updateDuneCountdowns() {
+            const now = Date.now();
+            let target, label;
+            if (now < DUNE_COUNTDOWN_START) { target = DUNE_COUNTDOWN_DEADLINE; label = "Dune: Part Three Releases in"; }
+            else if (now < DUNE_COUNTDOWN_DEADLINE) { target = DUNE_COUNTDOWN_DEADLINE; label = "Dune: Part Three Releases in"; }
+            else { target = now; label = "Release countdown complete"; }
+            const total = Math.max(0, Math.ceil((target - now) / 1000));
+            const values = { days: Math.floor(total / 86400), hours: Math.floor(total % 86400 / 3600), minutes: Math.floor(total % 3600 / 60), seconds: total % 60 };
+            document.querySelectorAll("[data-dune-countdown]").forEach(timer => {
+                timer.querySelector("[data-countdown-label]").textContent = label;
+                for (const [unit, value] of Object.entries(values)) timer.querySelector(`[data-unit="${unit}"]`).textContent = String(value).padStart(2, "0");
+            });
+        }
         function renderMovies() {
             const query = search.value.trim().toLowerCase();
             const genre = genreFilter.value;
@@ -2251,26 +2354,27 @@
                 const i = movies.indexOf(movie);
                 return `<article class="movie-card" style="animation-delay:${Math.min(index * 45, 260)}ms">
                     <button class="poster" type="button" data-movie="${i}" style="--poster-image:${movie.art};--poster-tint:${movie.tone}" aria-label="Choose seats for ${movie.title}">
-                        <span class="poster-tag">${movie.status}</span><span class="poster-title ${movie.title.length > 22 ? "small" : ""}">${movie.title}</span><span class="poster-credit">${movie.year} · FRAME FILM INDEX</span>
+                        <span class="poster-tag">${movie.status}</span><span class="poster-title ${movie.title.length > 22 ? "small" : ""}">${movie.title}</span><span class="poster-credit">${movie.year} · AbCinemas FILM INDEX</span>
                     </button>
                     <div class="movie-meta"><h3 class="movie-title">${movie.title}</h3>
                         <div class="film-subline"><span>${movie.genre}</span><span>${movie.duration}</span><span>${movie.age}</span></div>
-                        <p class="film-subline"><a class="letterboxd" href="${movie.letterboxd}" target="_blank" rel="noopener noreferrer">★ ${movie.rating === "TBA" ? "Rating TBA" : `${movie.rating} / 5 Letterboxd`} ↗</a></p>
-                        <p class="award-note">${movie.awards}</p>
-                        <div class="card-actions"><span>${movie.discount ? "50% off tickets" : movie.status}</span><button class="text-button" data-movie="${i}">Choose seats ↗</button></div>
+                        ${movie.countdownStart ? duneCountdownMarkup() : ""}
+                        <p class="film-subline rating-row">${movie.rating !== "TBA" ? `<span class="rating-score" aria-label="Letterboxd rating ${movie.rating} out of 5">${movie.rating}<small>/5</small></span>` : ""}<a class="letterboxd" href="${movie.letterboxd}" target="_blank" rel="noopener noreferrer" aria-label="Open ${movie.title} on Letterboxd" title="Open on Letterboxd"><img src="https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb.svg" alt="Letterboxd"></a></p>
+                        ${movie.awards ? `<p class="award-note">${movie.awards}</p>` : ""}
+                        <div class="card-actions"><strong class="studio-label">${movie.studio}</strong><button class="text-button" data-movie="${i}">Book tickets ↗</button></div>
                     </div>
                 </article>`;
             }).join("");
             if (!filtered.length) grid.innerHTML = '<p class="empty-state" style="display:block">No films match that search. Try another title or genre.</p>';
             grid.querySelectorAll("[data-movie]").forEach(button => button.addEventListener("click", () => openMovie(Number(button.dataset.movie))));
+            updateDuneCountdowns();
         }
         function showModal(wide = false) { document.querySelector(".modal").classList.toggle("wide", wide); backdrop.classList.add("open"); document.body.style.overflow = "hidden" } function closeModal() { backdrop.classList.remove("open"); document.querySelector(".modal").classList.remove("wide"); document.body.style.overflow = "" } function showToast(message) { toast.textContent = message; toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 2800) } function getBookings() { try { return JSON.parse(localStorage.getItem("larptix-bookings") || "[]") } catch { return [] } }
         const venueName = "AMB Dolby Cinema Kapali, Kapali Mall, Gandhinagar, Bengaluru";
         const mapsUrl = "https://www.google.com/maps/dir/?api=1&destination=AMB+Dolby+Cinema+Kapali,+Kapali+Mall,+Gandhinagar,+Bengaluru";
-        const bookMyShowUrl = "https://in.bookmyshow.com/cinemas/bengaluru/amb-cinemas-kapali-bengaluru/buytickets/ACKB";
         function openMovie(index) {
             activeMovie = movies[index];
-            const today = new Date().toISOString().slice(0, 10);
+            const today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
             const firstBookableDate = activeMovie.releaseDate && activeMovie.releaseDate > today ? activeMovie.releaseDate : today;
             let seatSequence = 0;
             const renderSeatGroups = (tier, rowIndex, ranges, fare) => ranges.map(([first, last]) => `<div class="seat-group">${Array.from({ length: last - first + 1 }, (_, offset) => {
@@ -2288,13 +2392,13 @@
             const classicRanges = [[[1, 16], [17, 32]], [[1, 15], [16, 30]], [[1, 13], [14, 26]]];
             const classicRows = classicRanges.map((ranges, rowIndex) => `<div class="seat-row classic ${rowIndex === 1 ? "short-30" : rowIndex === 2 ? "short-26" : ""}">${renderSeatGroups("C", rowIndex, ranges, 250)}</div>`).join("");
             modalBody.innerHTML = `<div class="detail-hero" style="--detail-image:${activeMovie.art}"><p class="section-kicker">${activeMovie.status}</p><h2 id="modal-title">${activeMovie.title}</h2></div>
-                <div class="modal-content"><p class="detail-description">${activeMovie.description}</p><div class="detail-facts"><span>${activeMovie.genre}</span><span>${activeMovie.duration}</span><span>${activeMovie.age}</span><a class="letterboxd" href="${activeMovie.letterboxd}" target="_blank" rel="noopener noreferrer">Letterboxd ${activeMovie.rating === "TBA" ? "rating TBA" : `${activeMovie.rating}/5`} ↗</a></div></div>
-                <form id="booking-form" class="booking-shell">
-                    <div class="venue-line"><strong>${venueName}</strong><a href="${bookMyShowUrl}" target="_blank" rel="noopener noreferrer">Live showtimes &amp; prices ↗</a></div>
+                <div class="modal-content"><p class="detail-description">${activeMovie.description}</p><div class="detail-facts"><span>${activeMovie.genre}</span><span>${activeMovie.duration}</span><span>${activeMovie.age}</span><a class="letterboxd detail-letterboxd" href="${activeMovie.letterboxd}" target="_blank" rel="noopener noreferrer" aria-label="Open ${activeMovie.title} on Letterboxd" title="Open on Letterboxd">${activeMovie.rating !== "TBA" ? `<span class="rating-score">${activeMovie.rating}<small>/5</small></span>` : ""}<img src="https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb.svg" alt="Letterboxd"></a></div></div>
+                <section class="schedule-step" id="schedule-step"><p class="section-kicker">STEP 1 · PICK A SHOW</p><h3>When would you like to go?</h3><p>Select your date and showtime to continue.</p><div class="schedule-fields"><label>Date<input id="schedule-date" type="date" min="${firstBookableDate}" value="${firstBookableDate}" required></label><label>Showtime<select id="schedule-time"><option>12:30 PM</option><option>3:45 PM</option><option>6:20 PM</option><option>9:15 PM</option></select></label></div><button class="primary-button" id="schedule-continue" type="button">Continue to seats <span class="arrow">↗</span></button></section>
+                <form id="booking-form" class="booking-shell" hidden>
+                    <div class="venue-line"><strong>${venueName}</strong></div>
                     <div class="seat-legend"><span><i class="seat-dot"></i>Available</span><span><i class="seat-dot selected"></i>Selected</span><span><i class="seat-dot taken"></i>Unavailable</span></div>
                     <div class="seat-map-scroll"><div class="seat-map"><section class="seat-tier grand"><h3 class="seat-tier-title">₹450 GRAND</h3>${grandBackRows}${grandFrontRows}</section><section class="seat-tier classic"><h3 class="seat-tier-title">₹250 CLASSIC</h3>${classicRows}</section><div class="screen">SCREEN</div></div></div>
-                    <p class="seat-preview-note">Layout recreated from your reference image. Seat availability and fares here are a preview; confirm live show pricing on BookMyShow.</p>
-                    <div class="booking-controls"><label>Date<input name="date" type="date" min="${firstBookableDate}" value="${firstBookableDate}" required></label><label>Showtime<select name="showtime"><option>12:30 PM</option><option>3:45 PM</option><option>6:20 PM</option><option>9:15 PM</option></select></label></div>
+                    <p class="seat-preview-note">Seat layout, availability and prices are sample data for this demo.</p>
                     <div class="food-section"><p class="food-heading">Add something for the show</p><div class="food-list">
                         <div class="food-option"><label><input type="checkbox" name="food" value="Classic popcorn" data-price="180">Classic popcorn</label><span>₹180</span></div>
                         <div class="food-option"><label><input type="checkbox" name="food" value="Nachos" data-price="220">Nachos</label><span>₹220</span></div>
@@ -2303,11 +2407,20 @@
                         <div class="food-option"><label><input type="checkbox" name="food" value="Diet Coke" data-price="120">Diet Coke</label><span>₹120</span></div>
                     </div></div>
                     <div class="checkout-row"><span>Estimated total <small id="discount-label"></small></span><strong id="booking-total">₹0</strong></div>
-                    <p class="checkout-note">Concession prices are sample menu estimates. ${activeMovie.discount ? "Dune: Part Three tickets are 50% off; the offer excludes food." : "Choose seats to see your estimate."} This demo does not charge or issue real tickets.</p>
-                    <button class="primary-button book-submit" type="submit">Continue to booking <span class="arrow">↗</span></button>
+                    <p class="checkout-note">Sample ticket and concession prices. ${activeMovie.discount ? "Dune: Part Three shows a 50% demo estimate." : "Choose seats to see your estimate."} Demo only; no real payment or ticket.</p>
+                    <button class="primary-button book-submit" type="submit">Book tickets <span class="arrow">↗</span></button>
                 </form>`;
             showModal(true);
             const form = document.getElementById("booking-form");
+            document.getElementById("schedule-continue").addEventListener("click", () => {
+                const date = document.getElementById("schedule-date");
+                if (!date.value || date.value < date.min) { date.reportValidity(); return; }
+                form.dataset.date = date.value;
+                form.dataset.showtime = document.getElementById("schedule-time").value;
+                document.getElementById("schedule-step").hidden = true;
+                form.hidden = false;
+                form.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
             const updateTotal = () => {
                 const selected = [...form.querySelectorAll(".seat.selected")];
                 const ticketAmount = selected.reduce((sum, seat) => sum + Number(seat.dataset.fare), 0);
@@ -2329,21 +2442,85 @@
             const ticketTotal = Math.round(seatBase * (movie.discount ? .5 : 1));
             const food = [...form.querySelectorAll("[name=food]:checked")].map(item => ({ name: item.value, price: Number(item.dataset.price) }));
             const foodTotal = food.reduce((sum, item) => sum + item.price, 0);
-            const values = Object.fromEntries(new FormData(form));
-            const booking = { id: crypto.randomUUID(), title: movie.title, date: values.date, time: values.showtime, cinema: venueName, seats: selectedSeats.map(seat => seat.dataset.seat), food, total: ticketTotal + foodTotal, discounted: Boolean(movie.discount) };
-            const bookings = getBookings();
-            bookings.push(booking);
-            localStorage.setItem("larptix-bookings", JSON.stringify(bookings));
-            modalBody.innerHTML = `<div class="booking-success"><p class="section-kicker">RESERVATION SAVED</p><h2 id="modal-title">You’re on the list.</h2><p>${movie.title} · ${booking.date} · ${booking.time}<br>${booking.seats.length} seat${booking.seats.length === 1 ? "" : "s"}: ${booking.seats.join(", ")} · Total estimate ₹${booking.total}</p><p>This is a local demo reservation, not a paid ticket. Confirm live availability and final pricing with the cinema.</p><div class="success-links"><a class="map-link" href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Directions to AMB Dolby Cinema Kapali ↗</a><a class="map-link" href="${bookMyShowUrl}" target="_blank" rel="noopener noreferrer">Book live tickets ↗</a></div></div>`;
+            const booking = { id: crypto.randomUUID(), title: movie.title, date: form.dataset.date, time: form.dataset.showtime, cinema: venueName, seats: selectedSeats.map(seat => seat.dataset.seat), food, total: ticketTotal + foodTotal, discounted: Boolean(movie.discount) };
+            showPaymentDemo(booking);
+        }
+        function showPaymentDemo(booking) {
+            modalBody.innerHTML = `<div class="payment-demo"><p class="section-kicker">SECURE CHECKOUT · STEP 3</p><h2 id="modal-title">Payment</h2><p>${booking.title} · ${booking.date} at ${booking.time}<br>${booking.seats.length} seat${booking.seats.length === 1 ? "" : "s"} · Total ₹${booking.total}</p><div class="payment-options"><label class="payment-option"><input type="radio" name="payment-method" value="UPI" checked> UPI</label><label class="payment-option"><input type="radio" name="payment-method" value="Card"> Credit or debit card</label><label class="payment-option"><input type="radio" name="payment-method" value="NetBanking"> Net banking</label><label class="payment-option"><input type="radio" name="payment-method" value="Wallet"> Digital wallet</label></div><form id="payment-form"><div class="payment-fields" id="payment-fields"></div><p class="payment-note">Payment preview only. No payment will be processed.</p><button class="primary-button" type="submit">Pay ₹${booking.total}</button></form></div>`;
+            const renderFields = () => {
+                const method = document.querySelector('[name="payment-method"]:checked')?.value || "UPI";
+                const fields = document.getElementById("payment-fields");
+                if (method === "UPI") fields.innerHTML = '<label>UPI ID<input name="upiId" type="text" placeholder="example@upi" autocomplete="off" required></label>';
+                else if (method === "Card") fields.innerHTML = '<label>Name on card<input name="cardName" type="text" placeholder="Cardholder name" autocomplete="off" required></label><label>Card number<input name="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="off" required></label><div class="split"><label>Expiry date<input name="expiry" type="text" placeholder="MM/YY" maxlength="5" autocomplete="off" required></label><label>CVV<input name="cvv" type="password" inputmode="numeric" maxlength="4" placeholder="000" autocomplete="off" required></label></div>';
+                else if (method === "NetBanking") fields.innerHTML = '<label>Choose your bank<select name="bank" required><option value="">Select a bank</option><option>State Bank of India</option><option>HDFC Bank</option><option>ICICI Bank</option><option>Axis Bank</option><option>Kotak Mahindra Bank</option><option>Bank of Baroda</option><option>Canara Bank</option><option>Union Bank of India</option></select></label>';
+                else fields.innerHTML = '<label>Choose your wallet<select name="wallet" required><option value="">Select a wallet</option><option>Airtel Wallet</option><option>MobiKwik Wallet</option><option>PhonePe Wallet</option><option>Amazon Pay Wallet</option><option>Paytm Wallet</option></select></label>';
+            };
+            document.querySelectorAll('[name="payment-method"]').forEach(option => option.addEventListener("change", renderFields));
+            renderFields();
+            document.getElementById("payment-form").addEventListener("submit", event => {
+                event.preventDefault();
+                const method = document.querySelector('[name="payment-method"]:checked')?.value || "UPI";
+                event.currentTarget.reset();
+                booking.status = "Demo payment simulated";
+                booking.method = method;
+                booking.ticketCode = `AB-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
+                const bookings = getBookings(); bookings.push(booking);
+                localStorage.setItem("larptix-bookings", JSON.stringify(bookings));
+                const qrData = `${venueName}\n${booking.title}\n${booking.date} · ${booking.time}\nSeats: ${booking.seats.join(", ")}\nTicket: ${booking.ticketCode}`;
+                const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=4&data=${encodeURIComponent(qrData)}`;
+                modalBody.innerHTML = `<div class="booking-success"><div class="digital-ticket"><header class="ticket-head"><p class="section-kicker">ABCINEMAS · TICKET PREVIEW</p><h2 id="modal-title">${booking.title}</h2><p>Enjoy your movie!</p></header><div class="ticket-body"><p class="ticket-cinema">AMB Kapali · Bengaluru</p><div class="ticket-details"><div class="ticket-detail"><small>Date</small><strong>${booking.date}</strong></div><div class="ticket-detail"><small>Showtime</small><strong>${booking.time}</strong></div><div class="ticket-detail"><small>Screen</small><strong>AMB Dolby Cinema</strong></div><div class="ticket-detail"><small>Ticket ID</small><strong>${booking.ticketCode}</strong></div></div><div class="ticket-seats"><span class="ticket-detail"><small>Seat number${booking.seats.length === 1 ? "" : "s"}</small><strong>${booking.seats.join(", ")}</strong></span></div><div class="ticket-qr-row"><img class="ticket-qr" src="${qrUrl}" alt="QR code for ${venueName}" referrerpolicy="no-referrer"><div class="ticket-qr-copy">Scan for ticket and cinema details.<br><a class="map-link" href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Directions to AMB Kapali ↗</a></div></div></div><footer class="ticket-footer">Total · ₹${booking.total}</footer></div><div class="ticket-actions"><button type="button" class="primary-button" id="ticket-done">Done</button></div></div>`;
+                document.getElementById("ticket-done").addEventListener("click", closeModal);
+            });
         }
         function openBookings() {
             const bookings = getBookings();
-            modalBody.innerHTML = `<div class="detail-hero"><p class="section-kicker">YOUR SAVED RESERVATIONS</p><h2 id="modal-title">My tickets</h2></div><div class="booking-list">${bookings.length ? bookings.map(booking => `<div class="booking-item"><div><h3>${booking.title}</h3><p>${booking.date} at ${booking.time} · ${(booking.seats || []).join(", ") || `${booking.tickets || 1} ticket`} · ₹${booking.total || "—"}</p><p>${(booking.food || []).map(item => item.name).join(", ") || "No food add-ons"}</p><a class="map-link" href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Directions to AMB Dolby Cinema Kapali ↗</a></div><button class="cancel-button" data-cancel="${booking.id}">Remove</button></div>`).join("") : '<p class="no-bookings">No saved reservations yet.</p>'}</div>`;
+            modalBody.innerHTML = `<div class="detail-hero"><p class="section-kicker">LOCAL DEMO TICKET PREVIEWS</p><h2 id="modal-title">My tickets</h2></div><div class="booking-list">${bookings.length ? bookings.map(booking => `<div class="booking-item"><div><h3>${booking.title}</h3><p>${booking.date} at ${booking.time} · ${(booking.seats || []).join(", ") || `${booking.tickets || 1} ticket`} · ₹${booking.total || "—"}</p><p>${(booking.food || []).map(item => item.name).join(", ") || "No food add-ons"} · Payment simulated</p><a class="map-link" href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Directions to AMB Dolby Cinema Kapali ↗</a></div><button class="cancel-button" data-cancel="${booking.id}">Remove preview</button></div>`).join("") : '<p class="no-bookings">No demo ticket previews yet.</p>'}</div>`;
             showModal();
-            modalBody.querySelectorAll("[data-cancel]").forEach(button => button.addEventListener("click", () => { localStorage.setItem("larptix-bookings", JSON.stringify(getBookings().filter(booking => booking.id !== button.dataset.cancel))); openBookings(); showToast("Reservation removed."); }));
+            modalBody.querySelectorAll("[data-cancel]").forEach(button => button.addEventListener("click", () => { localStorage.setItem("larptix-bookings", JSON.stringify(getBookings().filter(booking => booking.id !== button.dataset.cancel))); openBookings(); showToast("Demo preview removed."); }));
         }
         function openLogin() { modalBody.innerHTML = '<form class="login-form" id="login-form"><p class="section-kicker">WELCOME BACK</p><h2 id="modal-title">Your movie nights, together.</h2><p>Sign in with your email to keep your bookings close.</p><label>Email address<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required></label><button class="primary-button" type="submit">Continue <span class="arrow">↗</span></button></form>'; showModal(); document.getElementById("login-form").addEventListener("submit", event => { event.preventDefault(); const email = new FormData(event.currentTarget).get("email"); localStorage.setItem("larptix-email", email); closeModal(); showToast(`Signed in as ${email}`) }) }
-        search.addEventListener("input", renderMovies); genreFilter.addEventListener("change", renderMovies); document.getElementById("modal-close").addEventListener("click", closeModal); backdrop.addEventListener("click", event => { if (event.target === backdrop) closeModal() }); document.addEventListener("keydown", event => { if (event.key === "Escape") closeModal() }); document.getElementById("login-open").addEventListener("click", openLogin); document.getElementById("view-bookings").addEventListener("click", openBookings); document.getElementById("bookings-link").addEventListener("click", event => { event.preventDefault(); openBookings() }); renderMovies();
+
+        let authMode = "signin";
+        const authForm = document.getElementById("auth-form");
+        const authError = document.getElementById("auth-error");
+        const signInButton = document.getElementById("login-open");
+        function applySession(isAuthenticated) {
+            document.body.classList.toggle("authenticated", Boolean(isAuthenticated));
+            signInButton.hidden = Boolean(isAuthenticated);
+        }
+        function updateAuthMode(mode) {
+            authMode = mode;
+            const registering = mode === "register";
+            document.getElementById("signin-tab").setAttribute("aria-selected", String(!registering));
+            document.getElementById("register-tab").setAttribute("aria-selected", String(registering));
+            document.getElementById("auth-title").textContent = registering ? "Join the club." : "Welcome back.";
+            document.getElementById("auth-description").textContent = registering ? "Enter your email to start the local demo." : "Enter your email to continue the local demo.";
+            document.getElementById("auth-submit-label").textContent = registering ? "Start demo" : "Continue";
+            authError.textContent = "";
+        }
+        document.getElementById("signin-tab").addEventListener("click", () => updateAuthMode("signin"));
+        document.getElementById("register-tab").addEventListener("click", () => updateAuthMode("register"));
+        authForm.addEventListener("submit", event => {
+            event.preventDefault();
+            const email = String(new FormData(authForm).get("email") || "").trim();
+            if (!email) { authError.textContent = "Enter your email to continue."; return; }
+            localStorage.setItem("abcinemas-demo-email", email);
+            applySession(true);
+            if (authMode === "register") showDunePromo();
+        });
+        function showDunePromo() {
+            modalBody.innerHTML = '<div class="promo-content"><p class="section-kicker">A LITTLE SOMETHING FOR YOUR FIRST NIGHT</p><span class="promo-count">DUNE: PART THREE</span>' + duneCountdownMarkup() + '<h2 id="modal-title">Take 50% off your Dune booking estimate.</h2><p>Your Dune ticket estimate is half price in this demo booking flow.</p><p class="checkout-note">This is a demo estimate, not a real discount on live cinema tickets.</p><button type="button" class="primary-button" id="dune-promo-action">Book Dune tickets <span class="arrow">↗</span></button></div>';
+            showModal();
+            updateDuneCountdowns();
+            document.getElementById("dune-promo-action").addEventListener("click", () => {
+                closeModal();
+                const index = movies.findIndex(movie => movie.title === "Dune: Part Three");
+                if (index >= 0) openMovie(index);
+            });
+        }
+        applySession(Boolean(localStorage.getItem("abcinemas-demo-email")));
+        search.addEventListener("input", renderMovies); genreFilter.addEventListener("change", renderMovies); document.getElementById("modal-close").addEventListener("click", closeModal); backdrop.addEventListener("click", event => { if (event.target === backdrop) closeModal() }); document.addEventListener("keydown", event => { if (event.key === "Escape") closeModal() }); document.getElementById("login-open").addEventListener("click", openLogin); document.getElementById("view-bookings").addEventListener("click", openBookings); document.getElementById("bookings-link").addEventListener("click", event => { event.preventDefault(); openBookings() }); setInterval(updateDuneCountdowns, 1000);
+        renderMovies();
     </script>
 </body>
 
